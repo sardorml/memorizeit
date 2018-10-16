@@ -1,20 +1,13 @@
 <template>
   <div id="app">
-    <mainPage/>
+  <v-container fluid>
+    <router-view/>
+  </v-container>
   </div>
 </template>
 
 <script>
-import mainPage from "./components/main";
-
 export default {
-  name: "App",
-  components: {
-    mainPage
-  }
+  name: "app"
 };
 </script>
-
-<style>
-
-</style>
