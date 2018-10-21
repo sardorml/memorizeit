@@ -1,37 +1,47 @@
 <template>
-  <v-container fluid grid-list-md>
-    <v-layout column align-center justify-center>
-      <v-flex xs12>
-        <h1>Dashboard</h1>
-      </v-flex>
-    </v-layout>
-    <v-layout row justify-center>
-      <v-flex xs6 sm3 v-for="card in cards" :key="card.id">
-        <v-card>
-          <v-card-title primary-title>
-            <div>
-              <h3 class="headline mb-0">{{card.title}}</h3>
-              <div>{{card.value}}</div>
-            </div>
-          </v-card-title>
+  <v-layout row>
+    <v-flex xs12 sm6 offset-sm3>
+        <tool-bar :title="title"></tool-bar>
 
-          <v-card-actions>
-            <v-btn flat color="orange" :to="{ name: 'view-card', params: { card_id: card.card_id }}">View</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </v-container>
+      <v-card flat>
+
+        <v-spacer></v-spacer>
+
+        <v-card-text>
+          <div v-for="card in cards" :key="card.id" style="margin-bottom: 10px">
+            <v-card>
+              <v-card-title primary-title>
+                <div>
+                  <h3 class="headline mb-0">{{card.title}}</h3>
+                  <div>{{card.value}}</div>
+                </div>
+              </v-card-title>
+
+              <v-card-actions>
+                <v-btn flat color="orange" :to="{ name: 'view-card', params: { card_id: card.card_id }}">View</v-btn>
+              </v-card-actions>
+            </v-card>
+            
+          </div>
+        </v-card-text>
+      </v-card>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
+import toolBar from "@/components/navbar";
 import db from '../js/firebaseInit'
 export default {
-  name: "main",
+  name: "dashboard",
+  components:{
+    'tool-bar': toolBar
+  },
   data() {
     return {
       cards: [],
-      loading:true
+      loading:true,
+      title: 'Dashboard'
     };
   },
   created () {

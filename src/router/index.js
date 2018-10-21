@@ -12,22 +12,26 @@ export default new Router({
     {
       path: "/",
       name: "dashboard",
-      component: dashboard
+      component: dashboard,
+      props: true
     },
     {
       path: "/new",
       name: "new-card",
-      component: newCard
+      component: newCard,
+      props: true
     },
     {
       path: "/:card_id/edit",
       name: "card-edit",
-      component: cardEdit
+      component: cardEdit,
+      props: true
     },
     {
       path: "/:card_id",
       name: "view-card",
-      component: viewCard
+      component: viewCard,
+      props: true
     }
   ]
 });

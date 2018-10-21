@@ -1,12 +1,8 @@
 <template>
-  <v-container fluid grid-list-md>
-    <v-layout column align-center justify-center>
-      <v-flex xs12>
-        <h1>View Card {{title}}</h1>
-      </v-flex>
-    </v-layout>
-    <v-layout row justify-center>
-      <v-flex xs6 sm3>
+  <div>
+    <v-layout row>
+      <v-flex xs12 sm6 offset-sm3>
+        <tool-bar :title="'Card '+title"/>
         <v-card>
           <v-card-title primary-title>
             <div>
@@ -22,13 +18,17 @@
         </v-card>
       </v-flex>
     </v-layout>
-  </v-container>
+  </div>
 </template>
 
 <script>
+import toolBar from "@/components/navbar";
 import db from '../js/firebaseInit'
 export default {
   name: "view-card",
+  components: {
+    'tool-bar': toolBar
+  },
   data() {
     return {
       card_id: null,

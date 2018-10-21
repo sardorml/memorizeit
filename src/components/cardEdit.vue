@@ -1,13 +1,10 @@
 <template>
-  <v-container fluid grid-list-md>
-    <v-layout column align-center justify-center>
-      <v-flex xs12>
-        <h1>Edit Card {{title}}</h1>
-      </v-flex>
-    </v-layout>
-    <v-layout row justify-center>
-      <v-flex xs6 sm3>
-        <v-form ref="form" v-model="valid" lazy-validation>
+  <div>
+    <v-layout row>
+      <v-flex xs12 sm6 offset-sm3>
+        <tool-bar :title="'Edit '+title"/>
+        <div style="margin: 25px">
+          <v-form ref="form" v-model="valid" lazy-validation>
           <v-text-field
             v-model="card_id"
             :rules="rules"
@@ -33,15 +30,21 @@
           </v-btn>
           <v-btn @click="clear">clear</v-btn>
         </v-form>
+        </div>
+        
       </v-flex>
     </v-layout>
-  </v-container>
+  </div>
 </template>
 
 <script>
+import toolBar from "@/components/navbar";
 import db from '../js/firebaseInit'
 export default {
-  name: "new-card",
+  name: "card-edit",
+  components: {
+  'tool-bar': toolBar
+  },
   data() {
     return {
       valid: true,

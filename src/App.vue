@@ -1,12 +1,13 @@
 <template>
   <div id="app">
-  <v-container fluid>
+  <v-app>
     <router-view/>
-  </v-container>
+  </v-app>
   </div>
 </template>
 
 <script>
+import navBar from "@/components/navbar";
 export default {
   name: "app"
 };
